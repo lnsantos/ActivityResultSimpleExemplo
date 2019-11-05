@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">ActivityResultSimpleExemplo</string>
+    <string name="game_label_select_game">Select at game</string>
+    <string name="game_title_selection">List of games</string>
+
+    <string-array name="games">
+        <item>ALAN INSLAND</item>
+        <item>CS:GO</item>
+        <item>FORTNELSONS</item>
+        <item>League of Dota</item>
+        <item>Dota LOL</item>
+        <item>Brazucas</item>
+        <item>Github Game for fun</item>
+    </string-array>
+
 </resources>
