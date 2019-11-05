@@ -24,25 +24,27 @@ class GamerListActivity : AppCompatActivity() {
         listAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_single_choice, games)
         listView.adapter = listAdapter
         listView.choiceMode = AbsListView.CHOICE_MODE_SINGLE
+
         val game = intent.getStringExtra(ObjectGlobal.GameList.RESULT_KEY)
 
         if (game != null){
+            this.position = games.indexOf(game)
+            listView.setItemChecked(position, true)
+
             for (_game in games){
-                if(game != _game){
+                if(games[position] != _game){
                     val positionGame = games.indexOf(_game)
                     listView.setItemChecked(positionGame, false)
                 }
             }
-            this.position = games.indexOf(game)
-            listView.setItemChecked(position, true)
         }
 
          listView.setOnItemClickListener{list,view,index,_->
              if(view != null){
-                 val resultFinal = games[index]
+                 val gameSelect = games[index]
                  var intent = Intent()
 
-                 intent.putExtra(ObjectGlobal.GameList.RESULT_KEY,resultFinal)
+                 intent.putExtra(ObjectGlobal.GameList.RESULT_KEY,gameSelect)
                  setResult(Activity.RESULT_OK, intent)
                  finish()
              }
