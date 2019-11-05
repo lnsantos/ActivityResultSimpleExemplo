@@ -8,26 +8,24 @@ import android.view.View
 import android.widget.AbsListView
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import androidx.core.view.get
 import java.util.*
 
 class GamerListActivity : AppCompatActivity() {
-    companion object{
-        const val RESULT_KEY = "result"
-    }
-
         private lateinit var listView : ListView
         private lateinit var listAdapter : ArrayAdapter<String>
         private var position = -1
+
         override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         listView = ListView(this)
         setContentView(listView)
 
         val games = resources.getStringArray(R.array.games)
-        listAdapter = ArrayAdapter(this, android.R.layout.simple_selectable_list_item, games)
+        listAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_single_choice, games)
         listView.adapter = listAdapter
         listView.choiceMode = AbsListView.CHOICE_MODE_SINGLE
-        val game = intent.getStringExtra(RESULT_KEY)
+        val game = intent.getStringExtra(ObjectGlobal.GameList.RESULT_KEY)
 
         if (game != null){
             for (_game in games){
@@ -40,13 +38,15 @@ class GamerListActivity : AppCompatActivity() {
             listView.setItemChecked(position, true)
         }
 
-         listView.setOnClickListener {view ->
-             val resultFinal = listView.getItemAtPosition(position) as String
-             var intent = Intent()
+         listView.setOnItemClickListener{list,view,index,_->
+             if(view != null){
+                 val resultFinal = games[index]
+                 var intent = Intent()
 
-             intent.putExtra(RESULT_KEY,resultFinal)
-             setResult(Activity.RESULT_OK, intent)
-             finish()
+                 intent.putExtra(ObjectGlobal.GameList.RESULT_KEY,resultFinal)
+                 setResult(Activity.RESULT_OK, intent)
+                 finish()
+             }
          }
 
     }
