@@ -1,15 +1,14 @@
-package br.s.activityresultsimpleexemplo
+package br.s.activityresultsimpleexemplo.main.Activity
 
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.AbsListView
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import androidx.core.view.get
-import java.util.*
+import br.s.activityresultsimpleexemplo.R
+import br.s.activityresultsimpleexemplo.core.constantes.ObjectGlobal
 
 class GamerListActivity : AppCompatActivity() {
         private lateinit var listView : ListView

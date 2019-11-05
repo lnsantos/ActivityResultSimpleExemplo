@@ -1,7 +1,8 @@
-package br.s.activityresultsimpleexemplo
+package br.s.activityresultsimpleexemplo.main.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.s.activityresultsimpleexemplo.R
 
 class MainActivity : AppCompatActivity() {
 
